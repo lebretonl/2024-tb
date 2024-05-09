@@ -1,3 +1,4 @@
+#from openai import OpenAI
 import openai
 from dotenv import load_dotenv
 import os
@@ -6,20 +7,16 @@ import os
 load_dotenv()  
 # Clé API OpenAI
 openai.api_key = os.getenv("OPENAI_API_KEY") 
+print(openai.api_key)
 
-def generate_test(input):
-    messages = [
-        {"role": "user",
-         "content":     """As a CEO,
-                        I would like to know which software I could use to improve my business,
-                        from the information provided to you. \n"""},
+completion = openai.Completion.create(
+    model="gpt-3.5-turbo",
+    messages=[
+        {"role": "system", "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."},
+        {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
     ]
+)
 
-    messages.append({"role": "user", "content": f"{input}"})
-    completion = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=messages
-    )
-    reply = completion.choices[0].message.content
-    return reply
+print(completion['choices'][0]['message']['content'])
+
 
