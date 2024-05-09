@@ -4,6 +4,7 @@ from fastapi.responses import HTMLResponse
 import csv
 from fastapi.responses import FileResponse
 from fastapi.responses import RedirectResponse
+import openai
 
 # Création d'une instance de l'application FastAPI
 app = FastAPI()

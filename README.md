@@ -1,8 +1,21 @@
-# install fastAPI 
-pip install fastapi[all]
+# create virtual environnement
+python -m venv env_tb
 
-# install uvicorn (server)
-pip install uvicorn
+# activate venv
+## windows
+### si execution des scripts désactivés
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
+### In PowerShell
+env_tb\Scripts\Activate.ps1
+
+## ios/linux
+source env_tb/bin/activate
+
+# desactiver
+deactivate
+
+# install all package in requirements.txt (fastapi,openai, uvicorn ...)
+pip install -r requirements.txt
 
 # start server
 uvicorn main:app --reload
