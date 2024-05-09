@@ -2,10 +2,14 @@ from fastapi import FastAPI, Form, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 import csv
+from fastapi.staticfiles import StaticFiles
 
 
 # Création d'une instance de l'application FastAPI
 app = FastAPI()
+
+# Configuration pour les fichiers statiques (icone)
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Configuration pour les templates
 templates = Jinja2Templates(directory="templates")
