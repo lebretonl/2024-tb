@@ -4,7 +4,7 @@ from fastapi.responses import HTMLResponse
 import csv
 from fastapi.responses import FileResponse
 from fastapi.responses import RedirectResponse
-import utils
+from utils import generate_test
 
 
 
@@ -32,7 +32,7 @@ def submit_form(request: Request,pcs: str = Form(...), sector: str = Form(...), 
     with open('reponses.csv', mode='a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(['Nom PME: ' + nomPME])
-        writer.writerow(['1. Nombre de pc: ' + pcs])
+        writer.writerow(['1. Nombre ordinateur(s): ' + pcs])
         writer.writerow(['2. Secteur activite: ' + sector])
         writer.writerow(['-------------------'])
     
@@ -55,3 +55,22 @@ def get_submit_form(request: Request):
 def clear_csv(request: Request):
     open('reponses.csv', 'w').close()  
     return RedirectResponse(url="/submit")
+
+@app.get("/advice1")
+async def generate_advice1(request: Request):
+    #with open('reponses.csv', 'r') as file:
+    #    data = list(csv.reader(file))
+    #ad = generate_test(data)
+
+    with open('reponses.csv', 'r') as file:
+        data = list(csv.reader(file))
+    sector_activity = data[2][1] if len(data) > 2 and len(data[2]) > 1 else "Secteur activite : PISCINE POUR CHAT"
+    ad = generate_test(sector_activity)
+
+    with open('reponses.csv', mode='a', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow(['xxxxxxxxxxxxxxxxx'])
+            writer.writerow(['advice: ' + ad])
+            writer.writerow(['xxxxxxxxxxxxxxxxx'])
+
+    return {"product_description": ad}
