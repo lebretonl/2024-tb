@@ -22,7 +22,3 @@ def submit_form(pcs: str = Form(...)):
         writer = csv.writer(file)
         writer.writerow([pcs])
     return {"message": "Réponse enregistrée avec succès"}
-
-@app.get("/test", response_class=HTMLResponse)
-def read_root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})

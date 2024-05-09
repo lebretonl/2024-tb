@@ -3,8 +3,13 @@
 <html>
     {% block title %}Accueil{% endblock %}
     {% block content %}
-
-    <h1>Combien de PC avez-vous dans votre entreprise?</h1>
+    <h1>Conseils personnalisés pour améliorer la cyber-sécurité de sa PME</h1>
+    <div class="card">
+        <p>Bienvenue sur ma webapp, celle-ci a pour but de fournir des conseils personnalisé facilement applicable
+           afin de renforcer votre cybersécurité. Pour ceci veuillez répondre au formulaire ci-dessous.
+        </p>
+    </div>
+    <h4>Combien de PC avez-vous dans votre entreprise?</h4>
     <form action="/submit" method="post">
         <input type="radio" id="0-10" name="pcs" value="0-10">
         <label for="0-10">0-10</label><br>
