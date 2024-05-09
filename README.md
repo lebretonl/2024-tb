@@ -17,10 +17,8 @@ deactivate
 # install all package in requirements.txt (fastapi,openai, uvicorn ...)
 pip install -r requirements.txt
 
-# start server
+# start server manuellement
 uvicorn main:app --reload
 
-
-message test : """As a CEO,
-                        I would like to know which software I could use to improve my business,
-                        from the information provided to you. \n"""
+# sinon on peut run le main ou faire la commande
+python main.py

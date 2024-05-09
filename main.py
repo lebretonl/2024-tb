@@ -4,8 +4,8 @@ from fastapi.responses import HTMLResponse
 import csv
 from fastapi.responses import FileResponse
 from fastapi.responses import RedirectResponse
-from utils import generate_test
-
+from src.utils import generate_test
+import uvicorn
 
 
 # Création d'une instance de l'application FastAPI
@@ -81,3 +81,6 @@ async def generate_advice1(request: Request):
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
 
     return RedirectResponse(url="/submit")
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
