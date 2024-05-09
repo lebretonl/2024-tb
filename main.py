@@ -64,13 +64,20 @@ async def generate_advice1(request: Request):
 
     with open('reponses.csv', 'r') as file:
         data = list(csv.reader(file))
-    sector_activity = data[2][1] if len(data) > 2 and len(data[2]) > 1 else "Secteur activite : PISCINE POUR CHAT"
-    ad = generate_test(sector_activity)
+
+    # Extraire la raison sociale
+    raison_sociale = data[0][0].split(': ')[1]
+    # Extraire le nombre d'ordinateurs (pcs)
+    pcs = data[1][0].split(': ')[1]
+    # Extraire le secteur d'activité
+    sector_activity = data[2][0].split(': ')[1]
+    advice = generate_test(sector_activity,pcs)
 
     with open('reponses.csv', mode='a', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
-            writer.writerow(['advice: ' + ad])
+            writer.writerow(['advice pour ' + raison_sociale])
+            writer.writerow([advice])
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
 
-    return {"product_description": ad}
+    return RedirectResponse(url="/submit")
