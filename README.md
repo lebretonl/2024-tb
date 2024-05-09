@@ -21,4 +21,4 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 
 # sinon on peut run le main ou faire la commande
-python main.py
+python src/main.py

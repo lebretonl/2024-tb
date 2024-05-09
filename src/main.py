@@ -4,7 +4,7 @@ from fastapi.responses import HTMLResponse
 import csv
 from fastapi.responses import FileResponse
 from fastapi.responses import RedirectResponse
-from src.utils import generate_test
+from utils import generate_test
 import uvicorn
 
 
