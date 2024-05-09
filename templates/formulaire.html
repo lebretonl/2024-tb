@@ -1,9 +1,9 @@
 <!DOCTYPE html>
+{% extends "base.html" %}
 <html>
-<head>
-    <title>Formulaire Entreprise</title>
-</head>
-<body>
+    {% block title %}Accueil{% endblock %}
+    {% block content %}
+
     <h1>Combien de PC avez-vous dans votre entreprise?</h1>
     <form action="/submit" method="post">
         <input type="radio" id="0-10" name="pcs" value="0-10">
@@ -16,5 +16,5 @@
         <label for="201+">201+</label><br>
         <button type="submit">Soumettre</button>
     </form>
-</body>
+    {% endblock %}
 </html>
