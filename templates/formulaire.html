@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 {% extends "base.html" %}
 <html>
-    <link rel="icon" href="/static/favicon.ico">
     {% block title %}Accueil{% endblock %}
     {% block content %}
     <h1>Conseils personnalisés pour améliorer la cyber-sécurité de sa PME</h1>
@@ -10,8 +9,13 @@
            afin de renforcer votre cybersécurité. Pour ceci veuillez répondre au formulaire ci-dessous.
         </p>
     </div>
-    <h4>Combien de PC avez-vous dans votre entreprise?</h4>
     <form action="/submit" method="post">
+
+        <h4>Nom de votre entreprise</h4>
+        <input type="text" id="nomPME" name="nomPME" maxlength="30" placeholder="Entrez le nom de votre entreprise" size=28><br>
+        <br>
+
+        <h4>1. Combien de PC avez-vous dans votre entreprise?</h4>
         <input type="radio" id="0-10" name="pcs" value="0-10">
         <label for="0-10">0-10</label><br>
         <input type="radio" id="11-50" name="pcs" value="11-50">
@@ -19,8 +23,15 @@
         <input type="radio" id="51-200" name="pcs" value="51-200">
         <label for="51-200">51-200</label><br>
         <input type="radio" id="201+" name="pcs" value="201+">
-        <label for="201+">201+</label><br>
+        <label for="201+">201+</label>
+        <br><br><br>
+        
+        <h4>2. Votre secteur d'activité :</h4>
+        <input type="text" id="sector" name="sector" maxlength="30" placeholder="Entrez votre secteur">
+        <br><br><br>
+
         <button type="submit">Soumettre</button>
     </form>
+    <a href="/submit" class="button">Voir les réponses</a>
     {% endblock %}
 </html>

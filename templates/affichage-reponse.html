@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html>
+{% block title %}Réponse{% endblock %}
+{% block content %}
+<a href="/" class="button">Retour à la page d'accueil</a>
+<a href="/clear" class="button">Effacer les réponses</a>
+<table>
+    {% for row in data %}
+        <tr>
+        {% for cell in row %}
+            <td>{{ cell }}</td>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+</html>
