@@ -17,8 +17,12 @@ deactivate
 # install all package in requirements.txt (fastapi,openai, uvicorn ...)
 pip install -r requirements.txt
 
-# start server manuellement bug ??
-uvicorn main:app --reload
 
-# sinon on peut run le main ou faire la commande
-python src/main.py
+# run l'app via la commande
+depuis C:\..\TB2024\2024-tb
+faire la commande : 
+
+python src\main.py
+
+# accès à l'app
+l'app est accessible à l'adresse suivante : http://localhost:8000 ou http://127.0.0.1:8000/
