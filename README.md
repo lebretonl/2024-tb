@@ -1,42 +1,51 @@
-# créer l'environnement virtuel (seulement la 1ère fois)
-commande shell : 
+# Guide de Mise en Place de l'Environnement Virtuel et de l'Application
 
+## Créer l'environnement virtuel (seulement la première fois)
+Commande shell :
+```shell
 python -m venv env_tb
+```
 
-# Activer l'environnement virtuel venv
-## windows
-### si execution des scripts désactivés
-commande shell : 
+## Activer l'environnement virtuel `venv`
 
+### Windows
+#### Si l'exécution des scripts est désactivée
+Commande shell :
+```shell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
-### dans un PowerShell
-commande shell : 
-
+```
+#### Dans un PowerShell
+Commande shell :
+```shell
 env_tb\Scripts\Activate.ps1
+```
 
-## ios/linux
-commande shell : 
-
+### iOS/Linux
+Commande shell :
+```shell
 source env_tb/bin/activate
+```
 
-# désactiver l'environnement virtuel
-commande shell : 
-
+## Désactiver l'environnement virtuel
+Commande shell :
+```shell
 deactivate
+```
 
-# Installer les packages requirements.txt (fastapi,openai, uvicorn ...) (seulement la 1ère fois)
-commande shell : 
-
+## Installer les packages `requirements.txt` (FastAPI, OpenAI, Uvicorn, etc.) (seulement la première fois)
+Commande shell :
+```shell
 pip install -r requirements.txt
+```
 
-# run l'application
-depuis C:\..\TB2024\2024-tb
-
-commande shell : 
-
+## Lancer l'application
+Depuis `C:\..\TB2024\2024-tb`
+Commande shell :
+```shell
 python src\main.py
+```
 
-# accès à l'app
-l'app est accessible à l'adresse suivante : 
-
-http://localhost:8000 ou http://127.0.0.1:8000/
+## Accès à l'application
+L'application est accessible à l'adresse suivante :
+- [http://localhost:8000](http://localhost:8000)
+- [http://127.0.0.1:8000](http://127.0.0.1:8000)
