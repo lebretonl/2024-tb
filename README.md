@@ -1,8 +1,7 @@
-# create virtual environnement
-à faire seulement la première fois
+# créer l'environnement virtuel (seulement la 1ère fois)
 python -m venv env_tb
 
-# activate venv
+# Activer l'environnement virtuel venv
 ## windows
 ### si execution des scripts désactivés
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
