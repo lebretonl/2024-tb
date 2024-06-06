@@ -1,5 +1,3 @@
-# Guide de Mise en Place de l'Environnement Virtuel et de l'Application
-
 ## Créer l'environnement virtuel (seulement la première fois)
 Commande shell :
 ```shell
