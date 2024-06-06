@@ -1,4 +1,5 @@
 # create virtual environnement
+à faire seulement la première fois
 python -m venv env_tb
 
 # activate venv
@@ -17,11 +18,9 @@ deactivate
 # install all package in requirements.txt (fastapi,openai, uvicorn ...)
 pip install -r requirements.txt
 
-
 # run l'app via la commande
 depuis C:\..\TB2024\2024-tb
 faire la commande : 
-
 python src\main.py
 
 # accès à l'app
