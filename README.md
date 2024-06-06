@@ -17,7 +17,7 @@ deactivate
 # install all package in requirements.txt (fastapi,openai, uvicorn ...)
 pip install -r requirements.txt
 
-# start server manuellement
+# start server manuellement bug ??
 uvicorn main:app --reload
 
 # sinon on peut run le main ou faire la commande
