@@ -1,5 +1,5 @@
 # créer l'environnement virtuel (seulement la 1ère fois)
-python -m venv env_tb
+´python -m venv env_tb´
 
 # Activer l'environnement virtuel venv
 ## windows
