@@ -19,8 +19,12 @@ pip install -r requirements.txt
 
 # run l'app via la commande
 depuis C:\..\TB2024\2024-tb
+
 faire la commande : 
+
 python src\main.py
 
 # accès à l'app
-l'app est accessible à l'adresse suivante : http://localhost:8000 ou http://127.0.0.1:8000/
+l'app est accessible à l'adresse suivante : 
+
+http://localhost:8000 ou http://127.0.0.1:8000/
