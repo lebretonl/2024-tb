@@ -15,7 +15,7 @@
         <input type="text" id="nomPME" name="nomPME" maxlength="30" placeholder="Entrez le nom de votre entreprise" size=28><br>
         <br>
 
-        <h4>1. Combien de PC avez-vous dans votre entreprise?</h4>
+        <h4>1. Combien d'ordinateurs et de périphériques connectés utilisez-vous dans votre entreprise ?</h4>
         <input type="radio" id="0-10" name="pcs" value="0-10">
         <label for="0-10">0-10</label><br>
         <input type="radio" id="11-50" name="pcs" value="11-50">
@@ -25,9 +25,12 @@
         <input type="radio" id="201+" name="pcs" value="201+">
         <label for="201+">201+</label>
         <br><br>
-        
-        <h4>2. Votre secteur d'activité :</h4>
-        <input type="text" id="sector" name="sector" maxlength="30" placeholder="Entrez votre secteur">
+
+        <h4>2. Vos données sont-elles stockées localement sur des serveurs ou dans le cloud ?</h4>
+        <input type="radio" id="local" name="stockage" value="local">
+        <label for="local">Localement</label><br>
+        <input type="radio" id="cloud" name="stockage" value="cloud">
+        <label for="cloud">Dans le cloud</label>
         <br><br>
 
         <button type="submit">Soumettre</button>

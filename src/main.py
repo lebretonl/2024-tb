@@ -4,7 +4,7 @@ from fastapi.responses import HTMLResponse
 import csv
 from fastapi.responses import FileResponse
 from fastapi.responses import RedirectResponse
-from utils import generate_test
+from utils import question1
 import uvicorn
 
 
@@ -28,12 +28,11 @@ def form(request: Request):
 
 # Lors de la soumission du formulaire, les données sont envoyées en POST, et on affiche les réponses
 @app.post("/submit")
-def submit_form(request: Request,pcs: str = Form(...), sector: str = Form(...), nomPME: str = Form(...)):
+def submit_form(request: Request,pcs: str = Form(...), nomPME: str = Form(...)):
     with open('reponses.csv', mode='a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(['Nom PME: ' + nomPME])
         writer.writerow(['1. Nombre ordinateur(s): ' + pcs])
-        writer.writerow(['2. Secteur activite: ' + sector])
         writer.writerow(['-------------------'])
     
     with open('reponses.csv', 'r') as file:
@@ -58,10 +57,7 @@ def clear_csv(request: Request):
 
 @app.get("/advice1")
 async def generate_advice1(request: Request):
-    #with open('reponses.csv', 'r') as file:
-    #    data = list(csv.reader(file))
-    #ad = generate_test(data)
-
+    # Ouvrir le fichier CSV en mode lecture
     with open('reponses.csv', 'r') as file:
         data = list(csv.reader(file))
 
@@ -69,10 +65,10 @@ async def generate_advice1(request: Request):
     raison_sociale = data[0][0].split(': ')[1]
     # Extraire le nombre d'ordinateurs (pcs)
     pcs = data[1][0].split(': ')[1]
-    # Extraire le secteur d'activité
-    sector_activity = data[2][0].split(': ')[1]
-    advice = generate_test(sector_activity,pcs)
+    #Appel API OpenAI
+    advice = question1(pcs)
 
+    # Ecriture de la réponse dans le fichier CSV
     with open('reponses.csv', mode='a', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
