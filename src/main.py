@@ -4,7 +4,7 @@ from fastapi.responses import HTMLResponse
 import csv
 from fastapi.responses import FileResponse
 from fastapi.responses import RedirectResponse
-from utils import question1
+from utils import *
 import uvicorn
 
 
@@ -28,11 +28,13 @@ def form(request: Request):
 
 # Lors de la soumission du formulaire, les données sont envoyées en POST, et on affiche les réponses
 @app.post("/submit")
-def submit_form(request: Request,pcs: str = Form(...), nomPME: str = Form(...)):
+def submit_form(request: Request,pcs: str = Form(...), nomPME: str = Form(...), stockage: str = Form(...), partage: str = Form(...)):
     with open('reponses.csv', mode='a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(['Nom PME: ' + nomPME])
         writer.writerow(['1. Nombre ordinateur(s): ' + pcs])
+        writer.writerow(['2. Stockage des données: ' + stockage])
+        writer.writerow(['3. Partage de données: ' + partage])
         writer.writerow(['-------------------'])
     
     with open('reponses.csv', 'r') as file:
@@ -55,7 +57,7 @@ def clear_csv(request: Request):
     open('reponses.csv', 'w').close()  
     return RedirectResponse(url="/submit")
 
-@app.get("/advice1")
+@app.get("/advice")
 async def generate_advice1(request: Request):
     # Ouvrir le fichier CSV en mode lecture
     with open('reponses.csv', 'r') as file:
@@ -63,18 +65,28 @@ async def generate_advice1(request: Request):
 
     # Extraire la raison sociale
     raison_sociale = data[0][0].split(': ')[1]
-    # Extraire le nombre d'ordinateurs (pcs)
+    # Extraire le nombre de périphérique (pcs)
     pcs = data[1][0].split(': ')[1]
+    # Extraire le type de stockage
+    stockage = data[2][0].split(': ')[1]
+    # Extraire le type de partage
+    partage = data[3][0].split(': ')[1]
     #Appel API OpenAI
-    advice = question1(pcs)
+    advice1 = question1(pcs)
+    advice2 = question2(stockage)
+    advice3 = question3(partage)
 
     # Ecriture de la réponse dans le fichier CSV
     with open('reponses.csv', mode='a', newline='') as file:
             writer = csv.writer(file)
-            writer.writerow(['xxxxxxxxxxxxxxxxx'])
             writer.writerow(['advice pour ' + raison_sociale])
-            writer.writerow([advice])
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
+            writer.writerow([advice1])
+            writer.writerow(['xxxxxxxxxxxxxxxxx'])
+            writer.writerow([advice2])
+            writer.writerow(['xxxxxxxxxxxxxxxxx'])
+            writer.writerow([advice3])
+            writer.writerow(['-------------------'])
 
     return RedirectResponse(url="/submit")
 

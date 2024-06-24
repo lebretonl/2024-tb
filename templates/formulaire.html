@@ -12,7 +12,7 @@
     <form action="/submit" method="post">
 
         <h4>Nom de votre entreprise</h4>
-        <input type="text" id="nomPME" name="nomPME" maxlength="30" placeholder="Entrez le nom de votre entreprise" size=28><br>
+        <input type="text" id="nomPME" name="nomPME" maxlength="30" placeholder="Entrez le nom de votre entreprise" size=28 value="Test tb SARL"><br>
         <br>
 
         <h4>1. Combien d'ordinateurs et de périphériques connectés utilisez-vous dans votre entreprise ?</h4>
@@ -27,10 +27,19 @@
         <br><br>
 
         <h4>2. Vos données sont-elles stockées localement sur des serveurs ou dans le cloud ?</h4>
-        <input type="radio" id="local" name="stockage" value="local">
+        <input type="radio" id="local" name="stockage" value="localement">
         <label for="local">Localement</label><br>
         <input type="radio" id="cloud" name="stockage" value="cloud">
         <label for="cloud">Dans le cloud</label>
+        <br><br>
+
+        <h4>3. Comment les données sont-elles partagées au sein de votre entreprise ?</h4>
+        <input type="radio" id="interne" name="partage" value="interne">
+        <label for="interne">Réseaux interne / Intranet</label><br>
+        <input type="radio" id="externe" name="partage" value="externe">
+        <label for="externe">Réseaux externe / Internet</label><br>
+        <input type="radio" id="mixte" name="partage" value="mixte">
+        <label for="mixte">Les deux / Interne et Externe</label>
         <br><br>
 
         <button type="submit">Soumettre</button>
