@@ -43,3 +43,9 @@ def question3(partageData):
         message_systeme_custom = message_systeme + " La réponse doit contenir 2 conseils de chacun 15 mots maximum."
     
     return message_user + "\n" + completions(message_user, message_systeme_custom)
+
+def question4(listSoftware):
+    message_user = f"Nous utilisons les logiciels suivants pour la gestion de notre entreprise : {listSoftware}. Quels sont les meilleurs pratiques pour maintenir ces logiciels sécurisés ?"
+    message_systeme_custom = message_systeme + " La réponse doit contenir 2 conseils de 15 mots maximums par type de logiciel indiqué."
+    
+    return message_user + "\n" + completions(message_user, message_systeme_custom)

@@ -6,6 +6,8 @@ from fastapi.responses import FileResponse
 from fastapi.responses import RedirectResponse
 from utils import *
 import uvicorn
+from typing import List
+
 
 
 # Création d'une instance de l'application FastAPI
@@ -28,13 +30,16 @@ def form(request: Request):
 
 # Lors de la soumission du formulaire, les données sont envoyées en POST, et on affiche les réponses
 @app.post("/submit")
-def submit_form(request: Request,pcs: str = Form(...), nomPME: str = Form(...), stockage: str = Form(...), partage: str = Form(...)):
+def submit_form(request: Request,pcs: str = Form(...), nomPME: str = Form(...), stockage: str = Form(...), partage: str = Form(...), logiciels: List[str] = Form(...)):
+    
+    logiciels_str = ", ".join(logiciels)  # Convertir la liste des logiciels en une chaîne de caractères
     with open('reponses.csv', mode='a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(['Nom PME: ' + nomPME])
         writer.writerow(['1. Nombre ordinateur(s): ' + pcs])
         writer.writerow(['2. Stockage des données: ' + stockage])
         writer.writerow(['3. Partage de données: ' + partage])
+        writer.writerow(['4. Logiciels utilisés: ' + logiciels_str])
         writer.writerow(['-------------------'])
     
     with open('reponses.csv', 'r') as file:
@@ -71,10 +76,13 @@ async def generate_advice1(request: Request):
     stockage = data[2][0].split(': ')[1]
     # Extraire le type de partage
     partage = data[3][0].split(': ')[1]
+    # Extraire la liste des logiciels
+    logiciels = data[4][0].split(': ')[1].split(', ')
     #Appel API OpenAI
     advice1 = question1(pcs)
     advice2 = question2(stockage)
     advice3 = question3(partage)
+    advice4 = question4(logiciels)
 
     # Ecriture de la réponse dans le fichier CSV
     with open('reponses.csv', mode='a', newline='') as file:
@@ -86,8 +94,10 @@ async def generate_advice1(request: Request):
             writer.writerow([advice2])
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
             writer.writerow([advice3])
+            writer.writerow(['xxxxxxxxxxxxxxxxx'])
+            writer.writerow([advice4])
             writer.writerow(['-------------------'])
-
+            
     return RedirectResponse(url="/submit")
 
 if __name__ == "__main__":
