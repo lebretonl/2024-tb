@@ -9,6 +9,7 @@
            afin de renforcer votre cybersécurité. Pour ceci veuillez répondre au formulaire ci-dessous.
         </p>
     </div>
+    <div class="card">
     <form action="/submit" method="post">
 
         <h4>Nom de votre entreprise</h4>
@@ -50,9 +51,23 @@
         <label for="crm">CRM (Hubspot, Salesforce)</label><br>
         <input type="checkbox" id="erp" name="logiciels" value="erp">
         <label for="erp">ERP (SAP, Abacus ...)</label><br>
-
-        
+        <input type="checkbox" id="aucun" name="logiciels" value="aucun"  >
+        <label for="aucun">Aucun logiciel utilisé </label> <br><br>
+        <input type="text" id="autre" name="logiciels" placeholder="Autre logiciel utilisé" maxlength="30">
         <br><br>
+
+        <h4>5. Offrez-vous des formations et/ou des séances de sensibilisations à la cybersécurité à vos employés ? Si oui, à quelle fréquence ?</h4>
+        <input type="radio" id="6" name="formation" value="6 mois">
+        <label for="oui">Oui, tous les 6 mois</label><br>
+        <input type="radio" id="12" name="formation" value="1 ans">
+        <label for="oui">Oui, une fois par an</label><br>
+        <input type="radio" id="1" name="formation" value="une seule fois">
+        <label for="oui">Oui, une seule fois</label><br>
+        <input type="radio" id="non" name="formation" value="non">
+        <label for="non">Non</label>
+    </div>
+        
+        <h5>Veuillez soumettre au moins une réponse par question</h5>
         <button type="submit">Soumettre</button>
     </form>
     <br>

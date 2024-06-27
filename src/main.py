@@ -6,7 +6,7 @@ from fastapi.responses import FileResponse
 from fastapi.responses import RedirectResponse
 from utils import *
 import uvicorn
-from typing import List
+from typing import List, Optional
 
 
 
@@ -30,8 +30,13 @@ def form(request: Request):
 
 # Lors de la soumission du formulaire, les données sont envoyées en POST, et on affiche les réponses
 @app.post("/submit")
-def submit_form(request: Request,pcs: str = Form(...), nomPME: str = Form(...), stockage: str = Form(...), partage: str = Form(...), logiciels: List[str] = Form(...)):
-    
+def submit_form(request: Request,pcs: str = Form(...),
+                nomPME: str = Form(...), 
+                stockage: str = Form(...), 
+                partage: str = Form(...), 
+                logiciels: List[str] = Form(...),
+                formation: str = Form(...)
+):
     logiciels_str = ", ".join(logiciels)  # Convertir la liste des logiciels en une chaîne de caractères
     with open('reponses.csv', mode='a', newline='') as file:
         writer = csv.writer(file)
@@ -40,6 +45,7 @@ def submit_form(request: Request,pcs: str = Form(...), nomPME: str = Form(...), 
         writer.writerow(['2. Stockage des données: ' + stockage])
         writer.writerow(['3. Partage de données: ' + partage])
         writer.writerow(['4. Logiciels utilisés: ' + logiciels_str])
+        writer.writerow(['5. Formation en cybersécurité: ' + formation])
         writer.writerow(['-------------------'])
     
     with open('reponses.csv', 'r') as file:
@@ -78,16 +84,22 @@ async def generate_advice1(request: Request):
     partage = data[3][0].split(': ')[1]
     # Extraire la liste des logiciels
     logiciels = data[4][0].split(': ')[1].split(', ')
+    # Extraire la fréquence de formation
+    formation = data[5][0].split(': ')[1]
     #Appel API OpenAI
+    """
     advice1 = question1(pcs)
     advice2 = question2(stockage)
     advice3 = question3(partage)
     advice4 = question4(logiciels)
+    """
+    advice5 = question5(formation)
 
     # Ecriture de la réponse dans le fichier CSV
     with open('reponses.csv', mode='a', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(['advice pour ' + raison_sociale])
+            """
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
             writer.writerow([advice1])
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
@@ -96,6 +108,9 @@ async def generate_advice1(request: Request):
             writer.writerow([advice3])
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
             writer.writerow([advice4])
+            writer.writerow(['xxxxxxxxxxxxxxxxx'])
+            """
+            writer.writerow([advice5])
             writer.writerow(['-------------------'])
             
     return RedirectResponse(url="/submit")
