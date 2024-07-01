@@ -100,5 +100,8 @@ def question7(outils):
 
 def question8(typemdp):
     message_user = f"Afin de sécuriser notre réseau wifi nous utilisons {typemdp}. Est-ce que cela est adapté ?"
-    message_systeme_custom = message_systeme + " Si le niveau de sécurité n’est pas adapté, explique brièvement le concept de passphrase avec un exemple. 30 mots maximums."
+    if typemdp == 'un mot de passe élevé (Mg7@Lkf232-!)':
+        message_systeme_custom = message_systeme + " Si le niveau de sécurité est adapté, explique brièvement pourquoi une passphrase est mieux (plus facile à retenir et/ou transmettre à un client par exemple). 45 mots maximums"
+    else:
+        message_systeme_custom = message_systeme + " Si le niveau de sécurité n’est pas adapté, explique brièvement le concept de passphrase avec un exemple. 45 mots maximums."
     return message_user + "\n" + completions(message_user, message_systeme_custom)
