@@ -97,3 +97,8 @@ def question7(outils):
         Ajoute également pourquoi les outils conseillés sont prioritaires."
 
     return message_user + "\n" + completions(message_user, message_systeme_custom)
+
+def question8(typemdp):
+    message_user = f"Afin de sécuriser notre réseau wifi nous utilisons {typemdp}. Est-ce que cela est adapté ?"
+    message_systeme_custom = message_systeme + " Si le niveau de sécurité n’est pas adapté, explique brièvement le concept de passphrase avec un exemple. 30 mots maximums."
+    return message_user + "\n" + completions(message_user, message_systeme_custom)
