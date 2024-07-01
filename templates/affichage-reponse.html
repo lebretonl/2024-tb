@@ -5,15 +5,18 @@
 {% block content %}
 <a href="/" class="button">Retour à la page d'accueil</a>
 <a href="/clear" class="button">Effacer les réponses</a>
-<table>
-    {% for row in data %}
-        <tr>
-        {% for cell in row %}
-            <td>{{ cell }}</td>
+<div class="card">
+    <table>
+        {% for row in data %}
+            <tr>
+            {% for cell in row %}
+                <td>{{ cell }}</td>
+            {% endfor %}
+            </tr>
         {% endfor %}
-        </tr>
-    {% endfor %}
-</table>
+    </table>
+</div>
+
 
 <form action="/advice" method="get">
     <input type="submit" value="Generate Advice">

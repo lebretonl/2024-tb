@@ -38,7 +38,9 @@ def submit_form(request: Request,pcs: str = Form(...),
                 formation: str = Form(...),
                 reseaux : List[str] = Form(...),
                 outils: List[str] = Form(...),
-                wifi: str = Form(...)
+                wifi: str = Form(...),
+                actions: List[str] = Form(...),
+                domaine: str = Form(...)
 ):
     #logiciels_str = ", ".join(logiciels)  
     with open('reponses.csv', mode='a', newline='') as file:
@@ -52,6 +54,8 @@ def submit_form(request: Request,pcs: str = Form(...),
         writer.writerow(['6. Réseaux utilisés: ' + ', '.join(reseaux)])
         writer.writerow(['7. Outils utilisés: ' + ', '.join(outils)])
         writer.writerow(['8. Type de mot de passe: ' + wifi])
+        writer.writerow(['9. Actions après cyberattaques: '+ ', '.join(actions)])
+        writer.writerow(["10. Domaine d'activité: "+ domaine])
         writer.writerow(['-------------------'])
     
     with open('reponses.csv', 'r') as file:
@@ -98,6 +102,10 @@ async def generate_advice1(request: Request):
     outils = data[7][0].split(': ')[1].split(', ')
     # Extraire le type de mot de passe
     typemdp = data[8][0].split(': ')[1]
+    # Extraire action après cyberattaque
+    actions = data[9][0].split(': ')[1].split(',')
+    # Extraire domaine d'activité
+    domaine = data[10][0].split(': ')[1]
     #Appel API OpenAI
     """
     advice1 = question1(pcs)
@@ -107,8 +115,11 @@ async def generate_advice1(request: Request):
     advice5 = question5(formation)
     advice6 = question6(reseaux)
     advice7 = question7(outils)
-     """
     advice8 = question8(typemdp)
+    advice9 = question9(actions)
+
+    """
+    advice10 = question10(domaine)
 
     # Ecriture de la réponse dans le fichier CSV
     with open('reponses.csv', mode='a', newline='') as file:
@@ -129,9 +140,14 @@ async def generate_advice1(request: Request):
             writer.writerow([advice6])
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
             writer.writerow([advice7])
-            """
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
             writer.writerow([advice8])
+            writer.writerow(['xxxxxxxxxxxxxxxxx'])
+            writer.writerow([advice9])
+
+            """
+            writer.writerow(['xxxxxxxxxxxxxxxxx'])
+            writer.writerow([advice10])
             writer.writerow(['-------------------'])
             
     return RedirectResponse(url="/submit")

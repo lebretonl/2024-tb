@@ -1,15 +1,21 @@
 Nom PME: Test tb SARL
 1. Nombre ordinateur(s): 11-50
 2. Stockage des données: cloud
-3. Partage de données: mixte
-"4. Logiciels utilisés: aucun, "
+3. Partage de données: externe
+"4. Logiciels utilisés: comptabilité, "
 5. Formation en cybersécurité: une seule fois
-"6. Réseaux utilisés: facebook, "
-7. Outils utilisés: sauvegarde
-8. Type de mot de passe: un mot de passe élevé (Mg7@Lkf232-!)
+"6. Réseaux utilisés: twitter, "
+7. Outils utilisés: firewall
+8. Type de mot de passe: un mot de passe moyen (Entreprise12)
+9. Actions après cyberattaques: débranchement des machines
+10. Domaine d'activité: Boucherie
 -------------------
 advice pour Test tb SARL
 xxxxxxxxxxxxxxxxx
-"Afin de sécuriser notre réseau wifi nous utilisons un mot de passe élevé (Mg7@Lkf232-!). Est-ce que cela est adapté ?
-Oui, un mot de passe fort comme ""Mg7@Lkf232-!"" est adapté pour sécuriser un réseau wifi. Cependant, une passphrase peut être plus pratique car elle est souvent plus facile à retenir et à transmettre à un client tout en offrant un niveau de sécurité équivalent."
+"J’ai une PME dans le domaine Boucherie.         Donne-moi des exemples d’attaques qui se sont déjà passée avec des entreprises similaires.
+Bien sûr. Voici trois exemples d'attaques qui ont ciblé des entreprises de boucherie dans le passé :
+
+1. Attaque par rançongiciel : Les cybercriminels ont crypté les fichiers de l'entreprise et demandé une rançon pour les décrypter.
+2. Phishing : Des emails frauduleux ont été envoyés aux employés de la boucherie pour voler des informations sensibles.
+3. Attaque par injection SQL : Des pirates ont exploité une faille de sécurité dans le site web de la boucherie pour accéder à sa base de données."
 -------------------

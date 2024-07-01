@@ -106,3 +106,14 @@ def question8(typemdp):
         message_systeme_custom = message_systeme + " Si le niveau de sécurité n’est pas adapté, explique brièvement le concept de passphrase avec un exemple. 45 mots maximums.\
             Ajoute également les risques d'un réseau wifi mal sécurisé. (20 mots maximums)."
     return message_user + "\n" + completions(message_user, message_systeme_custom)
+
+def question9(actions):
+    message_user = f""
+    message_systeme_custom = message_systeme + ""
+    return message_user + "\n" + completions(message_user, message_systeme_custom)
+
+def question10(domaine):
+    message_user = f"J’ai une PME dans le domaine {domaine}. \
+        Donne-moi des exemples d’attaques qui se sont déjà passée avec des entreprises similaires."
+    message_systeme_custom = message_systeme + "Donne 3 exemples concrets de 20 mots chacun ?"
+    return message_user + "\n" + completions(message_user, message_systeme_custom)

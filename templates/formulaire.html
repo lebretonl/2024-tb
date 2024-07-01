@@ -15,6 +15,9 @@
         <h4>Nom de votre entreprise</h4>
         <input type="text" id="nomPME" name="nomPME" maxlength="30" placeholder="Entrez le nom de votre entreprise" size=28 value="Test tb SARL"><br>
         <br>
+        <h4>Quel est votre domaine d'activité ?</h4>
+        <input type="text" id="domaine" name="domaine" placeholder="Exemple: Boucherie, Batîment ..." size=28 maxlength="30">
+        <br><br>
 
         <h4>1. Combien d'ordinateurs et de périphériques connectés utilisez-vous dans votre entreprise ?</h4>
         <input type="radio" id="0-10" name="pcs" value="0-10">
@@ -53,7 +56,7 @@
         <label for="erp">ERP (SAP, Abacus ...)</label><br>
         <input type="checkbox" id="aucun" name="logiciels" value="aucun"  >
         <label for="aucun">Aucun</label> <br><br>
-        <input type="text" id="autre" name="logiciels" placeholder="Autre logiciel utilisé" maxlength="30">
+        <input type="text" id="autre" name="logiciels" placeholder="Autre logiciel utilisé" maxlength="30" size=28>
         <br><br>
 
         <h4>5. Offrez-vous des formations et/ou des séances de sensibilisations à la cybersécurité à vos employés ? Si oui, à quelle fréquence ?</h4>
@@ -78,7 +81,7 @@
         <label for="instagram">Instagram</label><br>
         <input type="checkbox" id="aucun" name="reseaux" value="aucun">
         <label for="aucun">Aucun</label><br><br>
-        <input type="text" id="autre" name="reseaux" placeholder="Autre réseau utilisé" maxlength="30">
+        <input type="text" id="autre" name="reseaux" placeholder="Autre réseau utilisé" maxlength="30" size=28>
         <br><br>
 
         <h4>7. Quels outils de sécurité utilisez-vous?</h4>
@@ -103,9 +106,15 @@
         <input type="radio" id="moyen" name="wifi" value="un mot de passe moyen (Entreprise12)">
         <label for="moyen">Mot de passe moyen (exemple : Entreprise12)</label><br>
         <input type="radio" id="eleve" name="wifi" value="un mot de passe élevé (Mg7@Lkf232-!)">
-        <label for="eleve">Mot de passe élevé (exemple : Mg7@Lkf232-!)</label>
+        <label for="eleve">Mot de passe élevé (exemple : Mg7@Lkf232-!)</label><br><br>
 
-
+        <h4>9. Quelles sont les actions que vous avez/auriez entrepris après une cyberattaque ?</h4>
+        <input type="checkbox" id="log" name="actions" value="vérification des logs">
+        <label for="log">Vérification des logs</label><br>
+        <input type="checkbox" id="debrancher" name="actions" value="débranchement des machines">
+        <label for="debrancher">Débranchement des machines</label><br>
+        <input type="checkbox" id="prestataire" name="actions" value="contact préstataire informatique">
+        <label for="prestataire">Contacter le prestataire informatique</label><br><br>
     </div>
         
         <h5>Veuillez soumettre au moins une réponse par question</h5>
