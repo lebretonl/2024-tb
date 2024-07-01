@@ -73,3 +73,15 @@ def question5(frequence):
         Fournis 1 conseil de manière concise (15 mots maximums et une notion de temps)"
 
     return message_user + "\n" + completions(message_user, message_systeme_custom)
+
+def question6(reseaux):
+    if reseaux == 'aucun':
+        message_user = "Nous n’utilisons pas les réseaux sociaux dans un cadre professionnel. \
+            Comment puis-je m’y préparer si jamais ?"
+    else:
+        message_user = f": Nous avons une présence active sur {reseaux}. \
+            Quels sont les risques que je peux rencontrer sur chaque réseau cité ?"
+    message_systeme_custom = message_systeme + \
+        "Sensibilise également l’utilisateur sur le social engineering en lui donnant un exemple par réseaux cité s’il y en a."
+    
+    return message_user + "\n" + completions(message_user, message_systeme_custom)
