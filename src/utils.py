@@ -85,3 +85,15 @@ def question6(reseaux):
         "Sensibilise également l’utilisateur sur le social engineering en lui donnant un exemple par réseaux cité s’il y en a."
     
     return message_user + "\n" + completions(message_user, message_systeme_custom)
+
+def question7(outils):
+    if outils == 'aucun':
+        message_user = "Nous n’utilisons pas les outils de sécurités suivants : \
+            Antivirus, pare-feu, VPN, gestionnaire de mot de passe et système de sauvegarde. Quels outils me conseilles-tu en priorité ?"
+    else:
+        message_user = f"Nous utilisons les outils suivants : {outils}. Quels autres outils parmi les suivants :\
+            Antivirus, pare-feu, VPN, gestionnaire de mot de passe et système de sauvegarde devrions-nous considérer en priorité ?"
+    message_systeme_custom = message_systeme + " Pour chaque réponse, celle-ci doit être concise et comporter 15 mots maximums. \
+        Ajoute également pourquoi les outils conseillés sont prioritaires."
+
+    return message_user + "\n" + completions(message_user, message_systeme_custom)
