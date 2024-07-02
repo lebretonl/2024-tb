@@ -101,15 +101,18 @@ def question7(outils):
 def question8(typemdp):
     message_user = f"Afin de sécuriser notre réseau wifi nous utilisons {typemdp}. Est-ce que cela est adapté ?"
     if typemdp == 'un mot de passe élevé (Mg7@Lkf232-!)':
-        message_systeme_custom = message_systeme + " Si le niveau de sécurité est adapté, explique brièvement pourquoi une passphrase est mieux (plus facile à retenir et/ou transmettre à un client par exemple). 45 mots maximums"
+        message_systeme_custom = message_systeme + " Si le niveau de sécurité est adapté, explique brièvement pourquoi une passphrase est mieux\
+              (plus facile à retenir et/ou transmettre à un client par exemple). 45 mots maximums"
     else:
         message_systeme_custom = message_systeme + " Si le niveau de sécurité n’est pas adapté, explique brièvement le concept de passphrase avec un exemple. 45 mots maximums.\
             Ajoute également les risques d'un réseau wifi mal sécurisé. (20 mots maximums)."
     return message_user + "\n" + completions(message_user, message_systeme_custom)
 
 def question9(actions):
-    message_user = f""
-    message_systeme_custom = message_systeme + ""
+    message_user = f"Voici les actions que j’ai entrepris à la suite d’une cyberattaque : {actions} \
+        Quelles actions pourrais-je ajouter afin d’être plus efficace ?"
+    message_systeme_custom = message_systeme + "La réponse fournit doit faire 50 mots maximum. \
+        Ajoute une explication supplémentaire concise (30 mots maximum) sur l’utilité et l’importance d’un plan d’urgence en cas de cyberattaque."
     return message_user + "\n" + completions(message_user, message_systeme_custom)
 
 def question10(domaine):
