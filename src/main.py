@@ -60,7 +60,7 @@ def submit_form(request: Request,pcs: str = Form(...),
                 domaine: str = Form(...)
 ):
     #logiciels_str = ", ".join(logiciels)  
-    with open('reponses.csv', mode='a', newline='') as file:
+    with open('resultats/reponses.csv', mode='a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(['Nom PME: ' + nomPME])
         writer.writerow(['1. Nombre ordinateur(s): ' + pcs])
@@ -74,7 +74,7 @@ def submit_form(request: Request,pcs: str = Form(...),
         writer.writerow(['9. Actions après cyberattaques: '+ ', '.join(actions)])
         writer.writerow(["10. Domaine d'activité: "+ domaine])
     
-    with open('reponses.csv', 'r') as file:
+    with open('resultats/reponses.csv', 'r') as file:
         data = list(csv.reader(file))
 
     return templates.TemplateResponse("affichage-reponse.html", {"request": request, "data": data})
@@ -82,7 +82,7 @@ def submit_form(request: Request,pcs: str = Form(...),
 # Permet de voir les réponses déjà soumises
 @app.get("/submit")
 def get_submit_form(request: Request):
-    with open('reponses.csv', 'r') as file:
+    with open('resultats/reponses.csv', 'r') as file:
         data = list(csv.reader(file))
 
     return templates.TemplateResponse("affichage-reponse.html", {"request": request, "data": data})
@@ -91,14 +91,14 @@ def get_submit_form(request: Request):
 # Redirige vers la page affichage-reponse.html pour afficher le contenu du fichier CSV (qui est vide)
 @app.get("/clear")
 def clear_csv(request: Request):
-    open('reponses.csv', 'w').close()
-    open('responses_advices.csv', 'w').close()  
+    open('resultats/reponses.csv', 'w').close()
+    open('resultats/responses_advices.csv', 'w').close()  
     return RedirectResponse(url="/submit")
 
 @app.get("/advice")
 async def generate_advice(request: Request):
     # Ouvrir le fichier CSV en mode lecture
-    with open('reponses.csv', 'r') as file:
+    with open('resultats/reponses.csv', 'r') as file:
         data = list(csv.reader(file))
     # Extraire la raison sociale
     raison_sociale = data[0][0].split(': ')[1]
@@ -164,7 +164,7 @@ async def generate_advice(request: Request):
 
 
     # Ecriture de la réponse dans le fichier CSV
-    with open('responses_advices.csv', mode='a', newline='') as file:
+    with open('resultats/responses_advices.csv', mode='a', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(['advices pour ' + raison_sociale])
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
@@ -198,7 +198,7 @@ async def generate_advice(request: Request):
             writer.writerow(["Question 10: Quel est votre domaine d’activité ?"])
             writer.writerow([advice10])
 
-    with open('responses_advices.csv', 'r') as file_advices:
+    with open('resultats/responses_advices.csv', 'r') as file_advices:
         reader = csv.reader(file_advices)
         data_ad = "\n".join(["".join(row) for row in reader])
     
