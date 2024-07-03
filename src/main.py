@@ -73,7 +73,6 @@ def submit_form(request: Request,pcs: str = Form(...),
         writer.writerow(['8. Type de mot de passe: ' + wifi])
         writer.writerow(['9. Actions après cyberattaques: '+ ', '.join(actions)])
         writer.writerow(["10. Domaine d'activité: "+ domaine])
-        writer.writerow(['-------------------'])
     
     with open('reponses.csv', 'r') as file:
         data = list(csv.reader(file))
@@ -92,7 +91,8 @@ def get_submit_form(request: Request):
 # Redirige vers la page affichage-reponse.html pour afficher le contenu du fichier CSV (qui est vide)
 @app.get("/clear")
 def clear_csv(request: Request):
-    open('reponses.csv', 'w').close()  
+    open('reponses.csv', 'w').close()
+    open('responses_advices.csv', 'w').close()  
     return RedirectResponse(url="/submit")
 
 @app.get("/advice")
@@ -100,7 +100,6 @@ async def generate_advice(request: Request):
     # Ouvrir le fichier CSV en mode lecture
     with open('reponses.csv', 'r') as file:
         data = list(csv.reader(file))
-
     # Extraire la raison sociale
     raison_sociale = data[0][0].split(': ')[1]
     # Extraire le nombre de périphérique (pcs)
@@ -161,38 +160,54 @@ async def generate_advice(request: Request):
     pdf.chapter_body("Question 10: Quel est votre domaine d’activité ?", underline=True)
     pdf.chapter_body(advice10)
 
-    pdf_output_path = f'resultats/{raison_sociale}_conseils.pdf'
-    pdf.output(pdf_output_path)
+    
 
-    """
+
     # Ecriture de la réponse dans le fichier CSV
-    with open('reponses.csv', mode='a', newline='') as file:
+    with open('responses_advices.csv', mode='a', newline='') as file:
             writer = csv.writer(file)
-            writer.writerow(['advice pour ' + raison_sociale])
+            writer.writerow(['advices pour ' + raison_sociale])
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
+            writer.writerow(["Question 1: Combien d'ordinateurs et de périphériques connectés utilisez-vous dans votre entreprise ?"])
             writer.writerow([advice1])
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
+            writer.writerow(["Question 2: Vos données sont-elles stockées localement sur des serveurs ou dans le cloud ?"])
             writer.writerow([advice2])
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
+            writer.writerow(["Question 3: Comment les données sont-elles partagées au sein de votre entreprise?"])
             writer.writerow([advice3])
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
+            writer.writerow(["Question 4: Quels types de logiciels utilisez-vous pour la gestion de votre entreprise?"])
             writer.writerow([advice4])
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
+            writer.writerow(["Question 5: Offrez-vous des formations et/ou des séances de sensibilisations à la cybersécurité à vos employés ? Si oui, à quelle fréquence ?"])
             writer.writerow([advice5])
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
+            writer.writerow(["Question 6: Quels sont les réseaux sociaux que vous utilisez dans un cadre professionnel ?"])
             writer.writerow([advice6])
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
+            writer.writerow(["Question 7: Quels outils de sécurité utilisez-vous ?"])
             writer.writerow([advice7])
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
+            writer.writerow(["Question 8: Comment votre réseau wifi est-il accessible ?"])
             writer.writerow([advice8])
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
+            writer.writerow(["Question 9: Quelles sont les actions que vous avez entrepris après une cyberattaque ? (Dans le cas où vous n’avez pas subi de cyber attaque, veuillez répondre comme si cela l’était)"])
             writer.writerow([advice9])
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
+            writer.writerow(["Question 10: Quel est votre domaine d’activité ?"])
             writer.writerow([advice10])
-            writer.writerow(['-------------------'])
+
+    with open('responses_advices.csv', 'r') as file_advices:
+        reader = csv.reader(file_advices)
+        data_ad = "\n".join(["".join(row) for row in reader])
     
-    return RedirectResponse(url="/submit")
-    """
+    gs = global_summary(data_ad)
+    pdf.chapter_body("Résumé global des conseils", underline=True)
+    pdf.chapter_body(gs)
+    pdf_output_path = f'resultats/{raison_sociale}_conseils.pdf'
+    pdf.output(pdf_output_path)
+    
     return FileResponse(path=pdf_output_path, filename=f'{raison_sociale}_conseils.pdf', media_type='application/pdf')      
 
 if __name__ == "__main__":

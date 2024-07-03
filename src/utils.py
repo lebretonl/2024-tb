@@ -133,3 +133,7 @@ def question10(domaine):
 
     display = f"Réponse: {domaine}\nConseil: "
     return display +  completions(message_user, message_systeme_custom)
+
+def global_summary(data):
+    message_user = f"Résume moi les conseils suivants : {data}. Regroupe par sujet. Je veux des bullets points."
+    return completions(message_user, message_systeme)
