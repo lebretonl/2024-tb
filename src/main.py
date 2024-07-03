@@ -79,7 +79,7 @@ def clear_csv(request: Request):
     return RedirectResponse(url="/submit")
 
 @app.get("/advice")
-async def generate_advice1(request: Request):
+async def generate_advice(request: Request):
     # Ouvrir le fichier CSV en mode lecture
     with open('reponses.csv', 'r') as file:
         data = list(csv.reader(file))
@@ -107,7 +107,7 @@ async def generate_advice1(request: Request):
     # Extraire domaine d'activité
     domaine = data[10][0].split(': ')[1]
     #Appel API OpenAI
-    """
+    
     advice1 = question1(pcs)
     advice2 = question2(stockage)
     advice3 = question3(partage)
@@ -117,15 +117,12 @@ async def generate_advice1(request: Request):
     advice7 = question7(outils)
     advice8 = question8(typemdp)
     advice9 = question9(actions)
-
-    """
     advice10 = question10(domaine)
 
     # Ecriture de la réponse dans le fichier CSV
     with open('reponses.csv', mode='a', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(['advice pour ' + raison_sociale])
-            """
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
             writer.writerow([advice1])
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
@@ -144,8 +141,6 @@ async def generate_advice1(request: Request):
             writer.writerow([advice8])
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
             writer.writerow([advice9])
-
-            """
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
             writer.writerow([advice10])
             writer.writerow(['-------------------'])
