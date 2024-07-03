@@ -6,6 +6,7 @@
 <a href="/" class="button">Retour à la page d'accueil</a>
 <a href="/clear" class="button">Effacer les réponses</a>
 <div class="card">
+    <p>Voici les réponses que vous avez soumises: </p>
     <table>
         {% for row in data %}
             <tr>
@@ -19,7 +20,7 @@
 
 
 <form action="/advice" method="get">
-    <input type="submit" value="Generate Advice">
+    <button type="submit">Télécharger les conseils en PDF</button>
 </form>
 {% endblock %}
 </html>

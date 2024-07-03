@@ -26,9 +26,7 @@ def question1(nb_devices):
     message_systeme_custom = message_systeme +f" La réponse doit contenir  3 conseils de chacun 15 mots maximum. \
         En début de réponse, mentionnez le nombre de périphériques."
 
-    display = f"Question 1: Combien d'ordinateurs et de périphériques connectés utilisez-vous dans votre entreprise ? \n \
-        Réponse: {nb_devices} \n \
-        Conseil: "
+    display = f" Réponse: {nb_devices}\nConseil: "
     return display + completions(message_user, message_systeme_custom)
 
 
@@ -41,9 +39,7 @@ def question2(stockage):
             Quelles mesures de sécurité devrions-nous mettre en place pour protéger ces données ?"
     message_systeme_custom = message_systeme + " La réponse doit contenir plusieurs conseils de chacun 15 mots maximum."
     
-    display = f"Question 2: Vos données sont-elles stockées localement sur des serveurs ou dans le cloud ? \n \
-        Réponse: {stockage} \n \
-        Conseil: "
+    display = f"Réponse: {stockage}\nConseil: "
     return display + completions(message_user, message_systeme_custom)
 
 def question3(partageData):
@@ -56,9 +52,7 @@ def question3(partageData):
             Comment pouvons-nous sécuriser ce partage de données ?"
         message_systeme_custom = message_systeme + " La réponse doit contenir 2 conseils de chacun 15 mots maximum."
     
-    display = f"Question 3: Comment les données sont-elles partagées au sein de votre entreprise? \n \
-        Réponse: {partageData} \n \
-        Conseil: "
+    display = f"Réponse: {partageData}\nConseil: "
     return display +  completions(message_user, message_systeme_custom)
 
 def question4(listSoftware):
@@ -66,9 +60,7 @@ def question4(listSoftware):
         Quels sont les meilleurs pratiques pour maintenir ces logiciels sécurisés ?"
     message_systeme_custom = message_systeme + " La réponse doit contenir 2 conseils de 15 mots maximums par type de logiciel indiqué."
     
-    display = f"Question 4: Quels types de logiciels utilisez-vous pour la gestion de votre entreprise? \n \
-        Réponse: {listSoftware} \n \
-        Conseil: "
+    display = f"Réponse: {listSoftware}\nConseil: "
     return display +  completions(message_user, message_systeme_custom)
 
 def question5(frequence):
@@ -84,9 +76,7 @@ def question5(frequence):
     message_systeme_custom = message_systeme + " Sensibilise l'utilisateur sur l'importance de la formation en cybersécurité par rapport à son message. \
         Fournis 1 conseil de manière concise (15 mots maximums et une notion de temps)"
 
-    display = f"Question 5: Offrez-vous des formations et/ou des séances de sensibilisations à la cybersécurité à vos employés ? Si oui, à quelle fréquence ? \n \
-        Réponse: {frequence} \n \
-        Conseil: "
+    display = f"Réponse: {frequence}\nConseil: "
     return display +  completions(message_user, message_systeme_custom)
 
 def question6(reseaux):
@@ -99,9 +89,7 @@ def question6(reseaux):
     message_systeme_custom = message_systeme + \
         "Sensibilise également l’utilisateur sur le social engineering en lui donnant un exemple par réseaux cité s’il y en a."
     
-    display = f"Question 6: Quels sont les réseaux sociaux que vous utilisez dans un cadre professionnel ? \n \
-        Réponse: {reseaux} \n \
-        Conseil: "
+    display = f"Réponse: {reseaux}\nConseil: "
     return display +  completions(message_user, message_systeme_custom)
 
 def question7(outils):
@@ -114,9 +102,7 @@ def question7(outils):
     message_systeme_custom = message_systeme + " Pour chaque réponse, celle-ci doit être concise et comporter 15 mots maximums. \
         Ajoute également pourquoi les outils conseillés sont prioritaires."
 
-    display = f"Question 7: Quels outils de sécurité utilisez-vous ? \n \
-        Réponse: {outils} \n \
-        Conseil: "
+    display = f"Réponse: {outils}\nConseil: "
     return display +  completions(message_user, message_systeme_custom)
 
 def question8(typemdp):
@@ -128,9 +114,7 @@ def question8(typemdp):
         message_systeme_custom = message_systeme + " Si le niveau de sécurité n’est pas adapté, explique brièvement le concept de passphrase avec un exemple. 45 mots maximums.\
             Ajoute également les risques d'un réseau wifi mal sécurisé. (20 mots maximums)."
         
-    display = f"Question 8: Comment votre réseau wifi est-il accessible ? \n \
-        Réponse: {typemdp} \n \
-        Conseil: "
+    display = f"Réponse: {typemdp}\nConseil: "
     return display +  completions(message_user, message_systeme_custom)
 
 def question9(actions):
@@ -139,9 +123,7 @@ def question9(actions):
     message_systeme_custom = message_systeme + "La réponse fournit doit faire 50 mots maximum. \
         Ajoute une explication supplémentaire concise (30 mots maximum) sur l’utilité et l’importance d’un plan d’urgence en cas de cyberattaque."
     
-    display = f"Question 9: Quelles sont les actions que vous avez entrepris après une cyberattaque ? (Dans le cas où vous n’avez pas subi de cyber attaque, veuillez répondre comme si cela l’était) \n \
-        Réponse: {actions} \n \
-        Conseil: "
+    display = f"Réponse: {actions}\nConseil: "
     return display +  completions(message_user, message_systeme_custom)
 
 def question10(domaine):
@@ -149,7 +131,5 @@ def question10(domaine):
         Donne-moi des exemples d’attaques qui se sont déjà passée avec des entreprises similaires."
     message_systeme_custom = message_systeme + "Donne 3 exemples concrets de 20 mots chacun ?"
 
-    display = f"Question 10: Quel est votre domaine d’activité ? \n \
-        Réponse: {domaine} \n \
-        Conseil: "
+    display = f"Réponse: {domaine}\nConseil: "
     return display +  completions(message_user, message_systeme_custom)

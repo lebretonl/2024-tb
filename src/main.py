@@ -7,8 +7,25 @@ from fastapi.responses import RedirectResponse
 from utils import *
 import uvicorn
 from typing import List, Optional
+from fpdf import FPDF
 
+class PDF(FPDF):
+    def header(self):
+        self.set_font('Arial', 'B', 24)
+        self.cell(0, 10, 'Conseils de Cybersécurité', 0, 1, 'C')
 
+    def chapter_title(self, title):
+        self.set_font('Arial', 'B', 14)
+        self.cell(0, 10, title, 0, 1, 'L')
+        self.ln(10)
+
+    def chapter_body(self, body, underline=False):
+        if underline:
+            self.set_font('Arial', 'U', 14)
+        else:
+            self.set_font('Arial', '', 12)
+        self.multi_cell(0, 10, body.encode('latin-1', 'replace').decode('latin-1'))
+        self.ln()
 
 # Création d'une instance de l'application FastAPI
 app = FastAPI()
@@ -119,6 +136,35 @@ async def generate_advice(request: Request):
     advice9 = question9(actions)
     advice10 = question10(domaine)
 
+    pdf = PDF()
+    pdf.add_page()
+
+    pdf.chapter_title(f"Nom de l'entreprise: {raison_sociale}")
+    pdf.chapter_body("Question 1: Combien d'ordinateurs et de périphériques connectés utilisez-vous dans votre entreprise ?", underline=True)
+    pdf.chapter_body(advice1)
+    pdf.chapter_body("Question 2: Vos données sont-elles stockées localement sur des serveurs ou dans le cloud ?", underline=True)
+    pdf.chapter_body(advice2)
+    pdf.chapter_body("Question 3: Comment les données sont-elles partagées au sein de votre entreprise?", underline=True)
+    pdf.chapter_body(advice3)
+    pdf.chapter_body("Question 4: Quels types de logiciels utilisez-vous pour la gestion de votre entreprise?", underline=True)
+    pdf.chapter_body(advice4)
+    pdf.chapter_body("Question 5: Offrez-vous des formations et/ou des séances de sensibilisations à la cybersécurité à vos employés ? Si oui, à quelle fréquence ?", underline=True)
+    pdf.chapter_body(advice5)
+    pdf.chapter_body("Question 6: Quels sont les réseaux sociaux que vous utilisez dans un cadre professionnel ?", underline=True)
+    pdf.chapter_body(advice6)
+    pdf.chapter_body("Question 7: Quels outils de sécurité utilisez-vous ?", underline=True)
+    pdf.chapter_body(advice7)
+    pdf.chapter_body("Question 8: Comment votre réseau wifi est-il accessible ?", underline=True)
+    pdf.chapter_body(advice8)
+    pdf.chapter_body("Question 9: Quelles sont les actions que vous avez entrepris après une cyberattaque ? (Dans le cas où vous n’avez pas subi de cyber attaque, veuillez répondre comme si cela l’était)", underline=True)
+    pdf.chapter_body(advice9)
+    pdf.chapter_body("Question 10: Quel est votre domaine d’activité ?", underline=True)
+    pdf.chapter_body(advice10)
+
+    pdf_output_path = f'resultats/{raison_sociale}_conseils.pdf'
+    pdf.output(pdf_output_path)
+
+    """
     # Ecriture de la réponse dans le fichier CSV
     with open('reponses.csv', mode='a', newline='') as file:
             writer = csv.writer(file)
@@ -144,8 +190,10 @@ async def generate_advice(request: Request):
             writer.writerow(['xxxxxxxxxxxxxxxxx'])
             writer.writerow([advice10])
             writer.writerow(['-------------------'])
-            
+    
     return RedirectResponse(url="/submit")
+    """
+    return FileResponse(path=pdf_output_path, filename=f'{raison_sociale}_conseils.pdf', media_type='application/pdf')      
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
