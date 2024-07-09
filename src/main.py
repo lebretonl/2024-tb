@@ -39,7 +39,7 @@ async def favicon():
 # Configuration pour les templates
 templates = Jinja2Templates(directory="templates")
 
-# Définition d'une route root qui répond à une requête GET
+# Redirection vers la page d'accueil avec le formulaire
 @app.get("/", response_class=HTMLResponse)
 def form(request: Request):
     return templates.TemplateResponse("formulaire.html", {"request": request})
@@ -207,6 +207,9 @@ async def generate_advice(request: Request):
     pdf.chapter_body(gs)
     pdf_output_path = f'resultats/{raison_sociale}_conseils.pdf'
     pdf.output(pdf_output_path)
+    # Effacer le contenu des fichiers CSV après avoir généré le PDF
+    open('resultats/reponses.csv', 'w').close()
+    open('resultats/responses_advices.csv', 'w').close() 
     
     return FileResponse(path=pdf_output_path, filename=f'{raison_sociale}_conseils.pdf', media_type='application/pdf')      
 
