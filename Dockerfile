@@ -11,7 +11,7 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Exposer le port sur lequel l'application va fonctionner
-EXPOSE 5000
+EXPOSE 8000
 
-# Définir la commande pour exécuter l'application
-CMD ["python", "src/main.py"]
+# Définir la commande pour exécuter l'application avec Uvicorn
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
