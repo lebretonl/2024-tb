@@ -8,7 +8,6 @@ from utils import *
 import uvicorn
 from typing import List, Optional
 from fpdf import FPDF
-from fastapi.middleware.cors import CORSMiddleware
 
 class PDF(FPDF):
     def header(self):
@@ -30,15 +29,6 @@ class PDF(FPDF):
 
 # Création d'une instance de l'application FastAPI
 app = FastAPI()
-
-# Configuration du middleware CORS
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # Autorise toutes les origines
-    allow_credentials=True,
-    allow_methods=["*"],  # Autorise toutes les méthodes HTTP (GET, POST, etc.)
-    allow_headers=["*"],  # Autorise tous les en-têtes
-)
 
 favicon_path = 'static/favicon.ico'
 
