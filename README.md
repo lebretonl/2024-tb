@@ -3,9 +3,16 @@
 - Avoir la version 3.9 de Python
 ```shell
 # Sinon télécharger python 
+# Windows
 curl -o python-3.9.0-amd64.exe https://www.python.org/ftp/python/3.9.0/python-3.9.0-amd64.exe
 # Installer python
 python-3.9.0-amd64.exe
+
+# Mac
+curl -o python-3.9.0-macosx10.9.pkg https://www.python.org/ftp/python/3.9.0/python-3.9.0-macosx10.9.pkg
+# Installer python
+sudo installer -pkg python-3.9.0-macosx10.9.pkg -target /
+
 # Vérifier sa version de python
 python --version
 
