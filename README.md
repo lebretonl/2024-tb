@@ -72,8 +72,6 @@ Ajouter les données des variables d'environnement nécessaire dans le .env
 Depuis `C:\..\TB2024\2024-tb`
 Commande shell :
 ```shell
-python src\main.py
-
 # windows
 python src\main.py
 # mac 
