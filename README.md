@@ -36,6 +36,13 @@ Commande shell :
 pip install -r requirements.txt
 ```
 
+## Fichier .env
+```
+Créer un fichier .env
+Copier le contenu du fichier .env.example dans le .env
+Ajouter les donnés des variables d'environnement nécessaire dans le .env
+```
+
 ## Lancer l'application
 Depuis `C:\..\TB2024\2024-tb`
 Commande shell :
