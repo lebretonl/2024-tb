@@ -1,4 +1,16 @@
 # Lancement du projet en local
+## Prérequis
+- Avoir la version 3.9 de Python
+```shell
+# Sinon télécharger python 
+curl -o python-3.9.0-amd64.exe https://www.python.org/ftp/python/3.9.0/python-3.9.0-amd64.exe
+# Installer python
+python-3.9.0-amd64.exe
+# Vérifier sa version de python
+python --version
+
+```
+
 ## Créer l'environnement virtuel (seulement la première fois)
 Commande shell :
 ```shell
