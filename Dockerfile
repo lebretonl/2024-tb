@@ -1,3 +1,6 @@
+# Le Dockerfile permet de déployer l'application dans un conteneur Docker via la plateforme Back4App.
+
+
 # Utiliser une image de base officielle de Python
 FROM python:3.9-slim
 
