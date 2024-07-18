@@ -1,3 +1,4 @@
+# Lancement du projet en local
 ## Créer l'environnement virtuel (seulement la première fois)
 Commande shell :
 ```shell
@@ -40,7 +41,7 @@ pip install -r requirements.txt
 ```
 Créer un fichier .env
 Copier le contenu du fichier .env.example dans le .env
-Ajouter les donnés des variables d'environnement nécessaire dans le .env
+Ajouter les données des variables d'environnement nécessaire dans le .env
 ```
 
 ## Lancer l'application
