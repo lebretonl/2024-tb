@@ -21,7 +21,6 @@ python3.9 --version
 ```
 
 ## Créer l'environnement virtuel (seulement la première fois)
-Commande shell :
 ```shell
 # windows
 python -m venv env_tb
@@ -31,23 +30,17 @@ python3.9 -m venv env_tb
 
 ## Activer l'environnement virtuel `venv`
 
-### Windows
-#### Si l'exécution des scripts est désactivée
-Commande shell :
 ```shell
+# windows
+# Si l'exécution des scripts est désactivée
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
-```
-#### Dans un PowerShell
-Commande shell :
-```shell
-env_tb\Scripts\Activate.ps1
-```
 
-### iOS/Linux
-Commande shell :
-```shell
+env_tb\Scripts\Activate.ps1
+
+# ios/linux
 source env_tb/bin/activate
 ```
+
 
 ## Désactiver l'environnement virtuel
 Commande shell :
@@ -69,7 +62,7 @@ Ajouter les données des variables d'environnement nécessaire dans le .env
 ```
 
 ## Lancer l'application
-Depuis `C:\..\TB2024\2024-tb`
+Depuis `..\2024-tb`
 Commande shell :
 ```shell
 # windows
