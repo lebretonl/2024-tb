@@ -43,7 +43,6 @@ source env_tb/bin/activate
 
 
 ## Désactiver l'environnement virtuel
-Commande shell :
 ```shell
 deactivate
 ```
