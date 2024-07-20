@@ -49,7 +49,6 @@ deactivate
 ```
 
 ## Installer les packages `requirements.txt` (FastAPI, OpenAI, Uvicorn, etc.) (seulement la première fois)
-Commande shell :
 ```shell
 pip install -r requirements.txt
 ```
@@ -63,7 +62,6 @@ Ajouter les données des variables d'environnement nécessaire dans le .env
 
 ## Lancer l'application
 Depuis `..\2024-tb`
-Commande shell :
 ```shell
 # windows
 python src\main.py
